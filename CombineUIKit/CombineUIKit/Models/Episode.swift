@@ -21,7 +21,7 @@ struct Episode: Decodable {
     let name: String
     let date: String
     let episode: String
-    let characters: [String] // TODO: CEDA - chage to use Character model
+    let characters: [String]
     let url: String
     
     enum CodingKeys: String, CodingKey {

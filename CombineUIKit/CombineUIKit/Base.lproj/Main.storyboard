@@ -30,11 +30,20 @@
                                     <action selector="showEpisodesAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qa2-4N-mhh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rB6-m0-qvp">
+                                <rect key="frame" x="25" y="119" width="88" height="30"/>
+                                <state key="normal" title="Test episode"/>
+                                <connections>
+                                    <action selector="testServiceAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kdr-If-SDd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Ess-cX-8Zd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="5dg-o5-snV"/>
+                            <constraint firstItem="rB6-m0-qvp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="75" id="5u3-Yr-y9y"/>
+                            <constraint firstItem="rB6-m0-qvp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="Tjj-Pw-gVD"/>
                             <constraint firstItem="Ess-cX-8Zd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="35" id="gxQ-Bs-7QD"/>
                             <constraint firstItem="gA5-Ih-TTn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="35" id="sne-Ea-pQK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gA5-Ih-TTn" secondAttribute="trailing" constant="25" id="tgK-Ui-sJN"/>

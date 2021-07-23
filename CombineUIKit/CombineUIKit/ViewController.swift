@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        NetworkManager.sharedInstance.getEpisode(url: "https://rickandmortyapi.com/api/episode/28") { }
     }
 
     // Esta función es solo para hacer pruebas dusrante el desarrollo
@@ -24,6 +25,11 @@ class ViewController: UIViewController {
     @IBAction func showCharactersAction(_ sender: Any) {
         
     }
+    
+    @IBAction func testServiceAction(_ sender: Any) {
+        NetworkManager.sharedInstance.getEpisode(url: "https://rickandmortyapi.com/api/episode/28") { }
+    }
+    
     
 }
 
