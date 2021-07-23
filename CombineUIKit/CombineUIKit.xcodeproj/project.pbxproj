@@ -14,6 +14,9 @@
 		4380BA1526AB1566006A25F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4380BA1426AB1566006A25F9 /* Assets.xcassets */; };
 		4380BA1826AB1566006A25F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4380BA1626AB1566006A25F9 /* LaunchScreen.storyboard */; };
 		4380BA2126AB1C1B006A25F9 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4380BA2026AB1C1B006A25F9 /* Episode.swift */; };
+		4380BA2826AB1E54006A25F9 /* EpisodesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4380BA2626AB1E54006A25F9 /* EpisodesController.swift */; };
+		4380BA2D26AB1EBD006A25F9 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4380BA2B26AB1EBD006A25F9 /* EpisodeCell.swift */; };
+		4380BA2E26AB1EBD006A25F9 /* EpisodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4380BA2C26AB1EBD006A25F9 /* EpisodeCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		4380BA1726AB1566006A25F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4380BA1926AB1566006A25F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4380BA2026AB1C1B006A25F9 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		4380BA2626AB1E54006A25F9 /* EpisodesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesController.swift; sourceTree = "<group>"; };
+		4380BA2B26AB1EBD006A25F9 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
+		4380BA2C26AB1EBD006A25F9 /* EpisodeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,7 @@
 		4380BA0A26AB1565006A25F9 /* CombineUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				4380BA2F26AB1ED6006A25F9 /* Utils */,
 				4380BA1F26AB1BC5006A25F9 /* Models */,
 				4380BA2326AB1DCD006A25F9 /* Modules */,
 				4380BA0B26AB1565006A25F9 /* AppDelegate.swift */,
@@ -82,8 +89,34 @@
 		4380BA2326AB1DCD006A25F9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4380BA2526AB1E2E006A25F9 /* Episodes */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		4380BA2526AB1E2E006A25F9 /* Episodes */ = {
+			isa = PBXGroup;
+			children = (
+				4380BA2A26AB1E95006A25F9 /* Views */,
+				4380BA2626AB1E54006A25F9 /* EpisodesController.swift */,
+			);
+			path = Episodes;
+			sourceTree = "<group>";
+		};
+		4380BA2A26AB1E95006A25F9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4380BA2B26AB1EBD006A25F9 /* EpisodeCell.swift */,
+				4380BA2C26AB1EBD006A25F9 /* EpisodeCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4380BA2F26AB1ED6006A25F9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4380BA1826AB1566006A25F9 /* LaunchScreen.storyboard in Resources */,
+				4380BA2E26AB1EBD006A25F9 /* EpisodeCell.xib in Resources */,
 				4380BA1526AB1566006A25F9 /* Assets.xcassets in Resources */,
 				4380BA1326AB1565006A25F9 /* Main.storyboard in Resources */,
 			);
@@ -157,9 +191,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4380BA1026AB1565006A25F9 /* ViewController.swift in Sources */,
+				4380BA2826AB1E54006A25F9 /* EpisodesController.swift in Sources */,
 				4380BA2126AB1C1B006A25F9 /* Episode.swift in Sources */,
 				4380BA0C26AB1565006A25F9 /* AppDelegate.swift in Sources */,
 				4380BA0E26AB1565006A25F9 /* SceneDelegate.swift in Sources */,
+				4380BA2D26AB1EBD006A25F9 /* EpisodeCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
