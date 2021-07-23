@@ -17,6 +17,7 @@ class EpisodesController: UIViewController {
         tableView.separatorStyle = .none
         tableView.estimatedRowHeight = 100
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .yellow
         return tableView
     }()
     
