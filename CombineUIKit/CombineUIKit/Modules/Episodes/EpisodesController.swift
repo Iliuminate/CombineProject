@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class EpisodesController: UIViewController {
     
@@ -20,6 +21,9 @@ class EpisodesController: UIViewController {
         tableView.backgroundColor = .yellow
         return tableView
     }()
+    
+    // MARK: - Public properties -
+    var observer: AnyCancellable?
     
     
     // MARK: - Lifecycle -
