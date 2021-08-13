@@ -8,6 +8,17 @@
 import Foundation
 import Combine
 
+enum NetworkError: Error {
+  case statusCode
+  case decoding
+  case invalidURL
+  case other(Error)
+  
+  static func map(_ error: Error) -> NetworkError {
+    return (error as? NetworkError) ?? .other(error)
+  }
+}
+
 class NetworkManager {
     
     static let sharedInstance = NetworkManager()
@@ -53,58 +64,37 @@ class NetworkManager {
 extension NetworkManager {
     
     /// Service with Combine
-    func getEpisodeCombine(url: String, completion: @escaping () -> Void) {
-        guard let url = URL(string: url) else { return }
-        URLSession.shared
+    func getEpisodeCombine(url: String) -> AnyPublisher<Episode, NetworkError> {
+        guard let url = URL(string: url) else { return Fail(error: NetworkError.invalidURL).eraseToAnyPublisher() }
+        return URLSession.shared
             .dataTaskPublisher(for: url)
-            // --------------------------------------------------
-            //.tryMap({ data, _ in
-            //    try JSONDecoder().decode(Episode.self, from: data)
-            //})
-            // --------------------------------------------------
-            .map(\.data)
+            .tryMap { response -> Data in
+                guard let httpURLResponse = response.response as? HTTPURLResponse,
+                      httpURLResponse.statusCode == 200 else {
+                    throw NetworkError.statusCode
+                }
+                return response.data
+            }
             .decode(type: Episode.self, decoder: JSONDecoder())
-            // --------------------------------------------------
-            .sink(
-                // receiveCompletion: (Subscribers.Completion<URLError>) -> Void)
-                receiveCompletion: { completion in
-                    switch completion {
-                    case .failure(let error): print("CEDA-EPISODE: Retrieving data with error: \(error)")
-                    case .finished: print("CEDA-EPISODE: finished")
-                    }
-                },
-                // receiveValue: ((data: Data, response: URLResponse)) -> Void)
-                receiveValue: { object in
-                    print("CEDA-EPISODE: Objet: \(object)")
-                })
-            .store(in: &subscriptions)
+            .mapError { NetworkError.map($0) }
+            .eraseToAnyPublisher()
     }
     
-    /// Service with Combine // TODO: CEDA - need implemetation
-    func getEpisodesCombine(url: String, completion: @escaping () -> Void) {
-        guard let url = URL(string: url) else { return }
-        URLSession.shared
+    /// Service with Combine
+    func getEpisodesCombine(url: String) -> AnyPublisher<[Episode], NetworkError> {
+        guard let url = URL(string: url) else { return Fail(error: NetworkError.invalidURL).eraseToAnyPublisher() }
+        return URLSession.shared
             .dataTaskPublisher(for: url)
-            // --------------------------------------------------
-            //.tryMap({ data, _ in
-            //    try JSONDecoder().decode(Episode.self, from: data)
-            //})
-            // --------------------------------------------------
-            .map(\.data)
-            .decode(type: Episode.self, decoder: JSONDecoder())
-            // --------------------------------------------------
-            .sink(
-                // receiveCompletion: (Subscribers.Completion<URLError>) -> Void)
-                receiveCompletion: { completion in
-                    switch completion {
-                    case .failure(let error): print("CEDA-EPISODE: Retrieving data with error: \(error)")
-                    case .finished: print("CEDA-EPISODE: finished")
-                    }
-                },
-                // receiveValue: ((data: Data, response: URLResponse)) -> Void)
-                receiveValue: { object in
-                    print("CEDA-EPISODE: Objet: \(object)")
-                })
-            .store(in: &subscriptions)
+            .tryMap { response -> Data in
+                guard let httpURLResponse = response.response as? HTTPURLResponse,
+                      httpURLResponse.statusCode == 200 else {
+                    throw NetworkError.statusCode
+                }
+                return response.data
+            }
+            .decode(type: ArrayEpisodes.self, decoder: JSONDecoder())
+            .tryMap { $0.episodes }
+            .mapError { NetworkError.map($0) }
+            .eraseToAnyPublisher()
     }
 }

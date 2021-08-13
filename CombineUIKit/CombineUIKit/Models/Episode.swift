@@ -33,3 +33,12 @@ struct Episode: Decodable {
         case url
     }
 }
+
+struct ArrayEpisodes: Decodable {
+    
+    let episodes: [Episode]
+    
+    enum CodingKeys: String, CodingKey {
+        case episodes = "results"
+    }
+}

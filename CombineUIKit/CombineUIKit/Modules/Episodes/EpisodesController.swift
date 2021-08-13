@@ -23,8 +23,8 @@ class EpisodesController: UIViewController {
     }()
     
     // MARK: - Public properties -
-    var observer: AnyCancellable?
-    
+    var subscriptions = Set<AnyCancellable>()
+    var episodes = CurrentValueSubject<[Episode], Never>([])
     
     // MARK: - Lifecycle -
     override func loadView() {
@@ -36,6 +36,7 @@ class EpisodesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        getEpisodes()
     }
     
     // MARK: - Private methods -
@@ -57,6 +58,29 @@ class EpisodesController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    private func configurePublishers() {
+    }
+    
+    private func getEpisode() {
+        
+    }
+    
+    private func getEpisodes() {
+        NetworkManager.sharedInstance.getEpisodesCombine(url: "https://rickandmortyapi.com/api/episode")
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished: break
+                case .failure(let error):
+                    print("Error: \(error)")
+                }
+            }, receiveValue: { [unowned self] episodesList in
+                episodes.send(episodesList)
+                tableView.reloadData()
+            })
+            .store(in: &subscriptions)
+    }
 }
 
 // MARK: - UITableViewDelegate -
@@ -68,11 +92,12 @@ extension EpisodesController: UITableViewDelegate {
 extension EpisodesController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return episodes.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: EpisodeCell.cellName, for: indexPath) as! EpisodeCell
+        cell.configure(with: episodes.value[indexPath.row])
+        return cell
     }
-    
 }
