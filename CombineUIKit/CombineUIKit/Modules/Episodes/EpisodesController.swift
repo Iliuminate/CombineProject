@@ -13,8 +13,8 @@ class EpisodesController: UIViewController {
     // MARK: - Private properties -
     private var tableView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: .plain)
-        tableView.allowsSelection = false
-        tableView.allowsSelectionDuringEditing = false
+        //tableView.allowsSelection = false
+        //tableView.allowsSelectionDuringEditing = false
         tableView.separatorStyle = .none
         tableView.estimatedRowHeight = 100
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -46,7 +46,7 @@ class EpisodesController: UIViewController {
     
     private func setUpConstraint() {
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: -30),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
@@ -57,13 +57,6 @@ class EpisodesController: UIViewController {
         tableView.register(UINib(nibName: EpisodeCell.cellName, bundle: nil), forCellReuseIdentifier: EpisodeCell.cellName)
         tableView.delegate = self
         tableView.dataSource = self
-    }
-    
-    private func configurePublishers() {
-    }
-    
-    private func getEpisode() {
-        
     }
     
     private func getEpisodes() {
@@ -81,11 +74,21 @@ class EpisodesController: UIViewController {
             })
             .store(in: &subscriptions)
     }
+    
+    private func navigate(indexPath: IndexPath) {
+        guard let navigation = navigationController else { return }
+        let controller = EpisodeDetailController()
+        controller.episode = episodes.value[indexPath.row]
+        navigation.pushViewController(controller, animated: true)
+    }
 }
 
 // MARK: - UITableViewDelegate -
 extension EpisodesController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigate(indexPath: indexPath)
+    }
 }
 
 // MARK: - UITableViewDataSource -

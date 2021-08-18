@@ -17,8 +17,9 @@ class ViewController: UIViewController {
 
     // Esta función es solo para hacer pruebas dusrante el desarrollo
     @IBAction func showEpisodesAction(_ sender: Any) {
-        let episodesController = EpisodesController()
-        self.present(episodesController, animated: true, completion: nil)
+        let navigation = UINavigationController(rootViewController: EpisodesController())
+        navigation.modalPresentationStyle = .overFullScreen
+        self.present(navigation, animated: true, completion: nil)
     }
     
     // Esta función es solo para hacer pruebas dusrante el desarrollo

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F3F7A7226CCAD1D003D2C4B /* EpisodeDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3F7A7026CCAD1D003D2C4B /* EpisodeDetailController.swift */; };
+		0F3F7A7326CCAD1D003D2C4B /* EpisodeDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F3F7A7126CCAD1D003D2C4B /* EpisodeDetailController.xib */; };
 		4380BA0C26AB1565006A25F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4380BA0B26AB1565006A25F9 /* AppDelegate.swift */; };
 		4380BA0E26AB1565006A25F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4380BA0D26AB1565006A25F9 /* SceneDelegate.swift */; };
 		4380BA1026AB1565006A25F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4380BA0F26AB1565006A25F9 /* ViewController.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F3F7A7026CCAD1D003D2C4B /* EpisodeDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailController.swift; sourceTree = "<group>"; };
+		0F3F7A7126CCAD1D003D2C4B /* EpisodeDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeDetailController.xib; sourceTree = "<group>"; };
 		4380BA0826AB1565006A25F9 /* CombineUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CombineUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4380BA0B26AB1565006A25F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4380BA0D26AB1565006A25F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F3F7A6F26CCACF6003D2C4B /* EpisodeDetail */ = {
+			isa = PBXGroup;
+			children = (
+				0F3F7A7026CCAD1D003D2C4B /* EpisodeDetailController.swift */,
+				0F3F7A7126CCAD1D003D2C4B /* EpisodeDetailController.xib */,
+			);
+			path = EpisodeDetail;
+			sourceTree = "<group>";
+		};
 		4380B9FF26AB1565006A25F9 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +107,7 @@
 		4380BA2326AB1DCD006A25F9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0F3F7A6F26CCACF6003D2C4B /* EpisodeDetail */,
 				4380BA2526AB1E2E006A25F9 /* Episodes */,
 			);
 			path = Modules;
@@ -184,6 +198,7 @@
 			files = (
 				4380BA1826AB1566006A25F9 /* LaunchScreen.storyboard in Resources */,
 				4380BA2E26AB1EBD006A25F9 /* EpisodeCell.xib in Resources */,
+				0F3F7A7326CCAD1D003D2C4B /* EpisodeDetailController.xib in Resources */,
 				4380BA1526AB1566006A25F9 /* Assets.xcassets in Resources */,
 				4380BA1326AB1565006A25F9 /* Main.storyboard in Resources */,
 			);
@@ -199,6 +214,7 @@
 				4380BA1026AB1565006A25F9 /* ViewController.swift in Sources */,
 				4380BA2826AB1E54006A25F9 /* EpisodesController.swift in Sources */,
 				4380BA3126AB24AE006A25F9 /* NetworkManager.swift in Sources */,
+				0F3F7A7226CCAD1D003D2C4B /* EpisodeDetailController.swift in Sources */,
 				64C0CBE426AB22C700C383BE /* Character.swift in Sources */,
 				4380BA2126AB1C1B006A25F9 /* Episode.swift in Sources */,
 				4380BA0C26AB1565006A25F9 /* AppDelegate.swift in Sources */,
